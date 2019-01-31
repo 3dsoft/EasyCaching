@@ -131,7 +131,7 @@ public class ValuesController : Controller
         await provider.SetAsync("demo", "123", TimeSpan.FromMinutes(1));                  
         
         //Get All
-        var res = _provider.GetByPrefix<string>("demo_");
+        IDictionary<string, CacheValue<string>> res = _provider.GetByPrefix<string>("demo");
         foreach (var item in res)
         {
            ViewBag.Cache += $"{item.Key} : {item.Value}<br />";
