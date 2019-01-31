@@ -129,6 +129,13 @@ public class ValuesController : Controller
             
         //Set Async
         await provider.SetAsync("demo", "123", TimeSpan.FromMinutes(1));                  
+        
+        //Get All
+        var res = _provider.GetByPrefix<string>("demo_");
+        foreach (var item in res)
+        {
+           ViewBag.Cache += $"{item.Key} : {item.Value}<br />";
+        }
     }
 }
 ```
